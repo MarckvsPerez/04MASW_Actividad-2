@@ -29,13 +29,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ServicioSeeder::class,
             ComercialSeeder::class,
-            ConsultoriaIntegralSeeder::class,
             InstitucionSeeder::class,
+            ConsultoriaIntegralSeeder::class,
             TrabajadorSeeder::class,
             AsesoriaSeeder::class,
             EmpresaSeeder::class,
             AdministrativoSeeder::class,
             FacturaSeeder::class,
+
             ContratoSeeder::class,
             ContratoMultipleSeeder::class,
             ContratoControlHorarioSeeder::class,
