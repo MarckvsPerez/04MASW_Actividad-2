@@ -16,6 +16,27 @@ class Brinda extends Model
         'cif',
     ];
 
+    public $incrementing = false;
+    public $timestamps = true;
+    protected $primaryKey = ['id_servicio', 'cif'];
+
+    public function getKey()
+    {
+        return [
+            'id_servicio' => $this->attributes['id_servicio'],
+            'cif' => $this->attributes['cif'],
+        ];
+    }
+
+    protected function setKeysForSaveQuery($query)
+    {
+        foreach ($this->getKey() as $keyName => $keyValue) {
+            $query->where($keyName, '=', $keyValue);
+        }
+
+        return $query;
+    }
+
     public function servicio()
     {
         return $this->belongsTo(Servicio::class, 'id_servicio', 'id_servicio');

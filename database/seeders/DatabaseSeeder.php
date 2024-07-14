@@ -36,12 +36,12 @@ class DatabaseSeeder extends Seeder
             EmpresaSeeder::class,
             AdministrativoSeeder::class,
             FacturaSeeder::class,
-
             ContratoSeeder::class,
             ContratoMultipleSeeder::class,
             ContratoControlHorarioSeeder::class,
             ComunidadPropietariosSeeder::class,
             BrindaSeeder::class,
+
             ContrataSeeder::class,
         ]);
     }
