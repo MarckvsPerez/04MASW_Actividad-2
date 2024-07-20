@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ServicioSeeder extends Seeder
 {
@@ -21,10 +22,13 @@ class ServicioSeeder extends Seeder
         ];
 
         foreach ($servicios as $servicio) {
+            $now = Carbon::now();
             DB::table('servicio')->updateOrInsert(
                 ['id_servicio' => $servicio['id_servicio']],
                 [
                     'nombre' => $servicio['nombre'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ContratoMultipleSeeder extends Seeder
 {
@@ -18,11 +19,14 @@ class ContratoMultipleSeeder extends Seeder
         ];
 
         foreach ($contratos_multiples as $contrato_multiple) {
+            $now = Carbon::now();
             DB::table('contrato_multiple')->updateOrInsert(
                 ['id_contrato_multiple' => $contrato_multiple['id_contrato_multiple']],
                 [
                     'fecha_cobro' => $contrato_multiple['fecha_cobro'],
                     'id_contrato' => $contrato_multiple['id_contrato'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }

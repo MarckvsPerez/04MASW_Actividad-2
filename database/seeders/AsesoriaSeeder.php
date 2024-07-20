@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AsesoriaSeeder extends Seeder
 {
@@ -18,9 +19,14 @@ class AsesoriaSeeder extends Seeder
         ];
 
         foreach ($asesorias as $asesoria) {
+            $now = Carbon::now();
             DB::table('asesoria_')->updateOrInsert(
                 ['cif' => $asesoria['cif']],
-                ['id_asesoria' => $asesoria['id_asesoria']]
+                [
+                    'id_asesoria' => $asesoria['id_asesoria'],
+                    'created_at' => $now,
+                    'updated_at' => $now
+                ]
             );
         }
     }

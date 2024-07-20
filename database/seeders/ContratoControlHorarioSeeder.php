@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ContratoControlHorarioSeeder extends Seeder
 {
@@ -19,10 +20,13 @@ class ContratoControlHorarioSeeder extends Seeder
         ];
 
         foreach ($contratos_control_horarios as $contrato_control_horario) {
+            $now = Carbon::now();
             DB::table('contrato_control_horario')->updateOrInsert(
                 ['id_contrato_control_horario' => $contrato_control_horario['id_contrato_control_horario']],
                 [
                     'id_contrato' => $contrato_control_horario['id_contrato'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }

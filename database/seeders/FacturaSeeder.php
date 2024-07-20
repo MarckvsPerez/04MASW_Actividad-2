@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class FacturaSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class FacturaSeeder extends Seeder
         ];
 
         foreach ($facturas as $factura) {
+            $now = Carbon::now();
             DB::table('factura')->updateOrInsert(
                 ['codigo_factura' => $factura['codigo_factura']],
                 [
@@ -31,6 +33,8 @@ class FacturaSeeder extends Seeder
                     're' => $factura['re'],
                     'rectificativa' => $factura['rectificativa'],
                     'dni' => $factura['dni'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }

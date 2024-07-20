@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class EmpresaSeeder extends Seeder
 {
@@ -46,6 +48,7 @@ class EmpresaSeeder extends Seeder
         ];
 
         foreach ($empresas as $empresa) {
+            $now = Carbon::now();
             DB::table('empresa')->updateOrInsert(
                 ['cif' => $empresa['cif']],
                 [
@@ -56,6 +59,8 @@ class EmpresaSeeder extends Seeder
                     'cnae' => $empresa['cnae'],
                     'numero_trabajadores' => $empresa['numero_trabajadores'],
                     'id_empresa' => $empresa['id_empresa'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ComunidadPropietariosSeeder extends Seeder
 {
@@ -22,11 +23,14 @@ class ComunidadPropietariosSeeder extends Seeder
         ];
 
         foreach ($comunidades as $comunidad) {
+            $now = Carbon::now();
             DB::table('comunidad_propietarios')->updateOrInsert(
                 ['id_comunidad' => $comunidad['id_comunidad']],
                 [
                     'nombre_fiscal' => $comunidad['nombre_fiscal'],
                     'cif' => $comunidad['cif'],
+                    'created_at' => $now,
+                    'updated_at' => $now
                 ]
             );
         }
