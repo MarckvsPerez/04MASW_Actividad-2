@@ -37,10 +37,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::table('institucion', function (Blueprint $table) {
-            $table->foreign('dni')->references('dni')->on('comercial')->onDelete('cascade');
-        });
-
         Schema::create('asesoria_', function (Blueprint $table) {
             $table->uuid('id_asesoria')->unique();
             $table->string('cif', 9)->primary();
